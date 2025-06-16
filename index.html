@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Medicine Reminder</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f7fdfd;
+      color: #333;
+    }
+    header {
+      background: #d0f0fd;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 { margin: 0; color: #0077b6; }
+    section { padding: 2rem 10%; }
+    h2 { color: #0077b6; margin-bottom: 0.5rem; }
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+    .form, .list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    input, button {
+      padding: 0.7rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background: #00b4d8;
+      color: #fff;
+      cursor: pointer;
+    }
+    li {
+      background: #e3f9ff;
+      padding: 0.7rem;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .img-section img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+    footer {
+      background: #caf0f8;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.95rem;
+      border-top: 1px solid #90e0ef;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Medicine Reminder</h1>
+    <p>Your simple companion to stay on track and stay healthy!</p>
+  </header>
+
+  <section>
+    <h2>Why this matters</h2>
+    <p>Every day, millions forget to take their medicines on time — which can affect treatment and overall well-being. Whether you're a student, adult, or senior, remembering doses is crucial to better health.</p>
+
+    <h2>How it helps</h2>
+    <p>This easy-to-use website allows you to create your own daily medicine list. No need for an app — just open the page, add your medicines and times, and manage your reminders effortlessly.</p>
+  </section>
+
+  <section>
+    <h2>Add Your Medicine</h2>
+    <div class="form">
+      <input type="text" id="name" placeholder="Medicine Name">
+      <input type="time" id="time">
+      <button onclick="addMedicine()">Add</button>
+    </div>
+    <ul id="medicines" class="list"></ul>
+  </section>
+
+  <section class="img-section">
+    <h2>Stay Consistent, Stay Healthy</h2>
+    <img src="https://images.unsplash.com/photo-1588776814546-ec7d2c10819f?auto=format&fit=crop&w=800&q=80" alt="Medicine Image">
+  </section>
+
+  <section>
+    <h2>Final Reminder</h2>
+    <p>Good health starts with good habits. Use this tool daily and stay committed to your routine. Consistency in taking your medicines can make a real difference in your recovery and lifestyle.</p>
+    <p><strong>Remember:</strong> You’re just one click away from better health. 💊</p>
+  </section>
+
+  <footer>
+    &copy; 2025 The Debug Crew – All Rights Reserved.
+  </footer>
+
+  <script>
+    function addMedicine() {
+      const name = document.getElementById('name').value;
+      const time = document.getElementById('time').value;
+      if (!name || !time) return alert('Please enter both medicine name and time.');
+
+      const li = document.createElement('li');
+      li.innerHTML = `<span>${name} at ${time}</span><button onclick="this.parentElement.remove()">Delete</button>`;
+      document.getElementById('medicines').appendChild(li);
+
+      document.getElementById('name').value = '';
+      document.getElementById('time').value = '';
+    }
+  </script>
+
+</body>
+</html>
